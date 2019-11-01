@@ -1,22 +1,33 @@
+require 'pp'
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'directors_database'
 
+# nds is an array of hash of array of hash
+
 def directors_totals(nds)
-  # Remember, it's always OK to pretty print what you get *in* to make sure
-  # that you know what you're starting with!
-  #
-  #
-  # The Hash result be full of things like "Jean-Pierre Jeunet" => "222312123123"
-  result = {
-  }
-  #
-  # Use loops, variables and the accessing method, [], to loop through the NDS
-  # and total up all the
-  # ...
-  # ...
-  # ...
-  #
-  #
-  # Be sure to return the result at the end!
-  nil
+  
+  directors_totals = {}
+  
+  row_index = 0
+  
+  
+  # iterate through the nds array and assign the current director key in 
+  # our return hash the value of the name of the current director
+  
+  while row_index < nds.length do
+    current_director = nds[row_index][:name]
+    col_index = 0
+    
+    # Iterate through the nested movies array and add up the worldwide gross for each director
+    director_gross = 0
+    while col_index < nds[row_index][:movies].length do 
+      director_gross += nds[row_index][:movies][col_index][:worldwide_gross]
+      col_index += 1
+    end
+    
+    # make my return hash directors_totals to have the current director as a key and director_gross as its value
+    directors_totals[current_director] = director_gross
+    row_index += 1
+  end
+  directors_totals
 end
