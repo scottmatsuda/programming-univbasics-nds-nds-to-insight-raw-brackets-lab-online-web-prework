@@ -30,4 +30,8 @@ def directors_totals(nds)
     row_index += 1
   end
   directors_totals
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> ec7e59e1d70b2de4b1c27338f98987ecf5c0436f
